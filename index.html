@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>فاکتورچی | مدیریت فروشگاه</title>
+<style>
+:root{--bg:#f4f6fb;--card:#fff;--ink:#172033;--muted:#68738a;--primary:#5b55e7;--primary2:#4540c8;--line:#e5e9f2;--green:#138a63;--red:#d74747;--shadow:0 12px 32px #1824480d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,"Segoe UI",sans-serif;font-size:14px}
+header{background:linear-gradient(125deg,#28256f,#625bea);color:white;padding:22px 18px 76px}
+.top{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:12px}.logo{width:45px;height:45px;border-radius:15px;background:#ffffff24;display:grid;place-items:center;font-size:25px}.brand h1{font-size:21px;margin:0 0 5px}.brand p{margin:0;color:#d9d8ff;font-size:12px}.pill{border:1px solid #ffffff50;border-radius:20px;padding:8px 12px;font-size:12px}
+main{max-width:1100px;margin:-54px auto 35px;padding:0 16px}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:white;border-radius:17px;padding:8px;box-shadow:var(--shadow);margin-bottom:18px}.tab{border:0;background:transparent;padding:13px 7px;border-radius:11px;color:var(--muted);font:inherit;cursor:pointer}.tab.active{background:#eeedff;color:var(--primary);font-weight:bold}.panel{display:none}.panel.active{display:block}.layout{display:grid;grid-template-columns: minmax(0,1fr) minmax(0,1.2fr);gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:19px;box-shadow:var(--shadow);margin-bottom:16px}.card h2{font-size:16px;margin:0 0 16px}.sub{color:var(--muted);font-size:12px;line-height:1.8;margin-top:-9px;margin-bottom:14px}
+label{display:block;font-size:12px;color:var(--muted);margin:0 0 7px}input,textarea,select{width:100%;border:1px solid #dfe4ee;border-radius:10px;padding:11px 12px;font:inherit;color:var(--ink);background:#fff;outline:none}input:focus,textarea:focus,select:focus{border-color:#8984f5;box-shadow:0 0 0 3px #5b55e714}.field{margin-bottom:13px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.btn{border:0;border-radius:10px;padding:11px 14px;font:inherit;cursor:pointer;font-weight:bold}.primary{background:var(--primary);color:white}.primary:hover{background:var(--primary2)}.secondary{background:#efefff;color:var(--primary)}.danger{background:#fff0f0;color:var(--red)}.soft{background:#f1f3f8;color:#3d4860}.btnrow{display:flex;gap:8px;flex-wrap:wrap}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px}.stat small{color:var(--muted)}.stat strong{display:block;margin-top:8px;font-size:18px}.search{margin-bottom:12px}.product-list{display:grid;gap:9px}.product{border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;align-items:center;justify-content:space-between;gap:10px}.product h3{font-size:13px;margin:0 0 6px}.meta{color:var(--muted);font-size:12px;line-height:1.8}.product-actions{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end}.mini{font-size:11px;padding:7px 9px;border-radius:8px}.empty{text-align:center;color:var(--muted);padding:28px 10px;border:1px dashed #d8deea;border-radius:12px}.cart-row{display:grid;grid-template-columns:1fr 90px auto;align-items:center;gap:8px;padding:11px 0;border-bottom:1px solid var(--line)}.cart-row:last-child{border-bottom:0}.cart-row strong{font-size:12px}.cart-row input{padding:8px}.total{display:flex;justify-content:space-between;align-items:center;padding:14px 0;font-weight:bold;font-size:16px}.notice{background:#f0faf6;color:#167353;padding:11px;border-radius:10px;font-size:12px;line-height:1.8;margin-bottom:12px}.about{text-align:center;padding:36px 20px}.about-logo{font-size:45px;margin-bottom:10px}.about h2{font-size:22px}.about p{max-width:520px;margin:0 auto;color:var(--muted);line-height:2}.credit{margin-top:28px;padding:14px;background:#f1f0ff;color:#514bd2;border-radius:12px;display:inline-block;font-weight:bold}
+.invoice-preview{background:white;border:1px solid #e4e7ef;border-radius:12px;padding:22px;color:#1b2438}.invoice-preview .invhead{display:flex;justify-content:space-between;gap:10px;border-bottom:2px solid #5b55e7;padding-bottom:15px;margin-bottom:14px}.invoice-preview h3{margin:0 0 6px;font-size:18px}.invoice-preview p{margin:4px 0;font-size:12px;color:#69738a}.invoice-preview table{width:100%;border-collapse:collapse;margin-top:14px;font-size:12px}.invoice-preview th,.invoice-preview td{text-align:right;padding:9px 5px;border-bottom:1px solid #edf0f5}.invoice-preview th{background:#f5f5ff}.invtotal{text-align:left;font-weight:bold;font-size:16px;margin-top:16px}.invfoot{text-align:center;border-top:1px dashed #d8ddeb;margin-top:18px;padding-top:12px;font-size:11px;color:#69738a}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#172033;color:white;padding:12px 18px;border-radius:12px;box-shadow:var(--shadow);display:none;z-index:5;max-width:90%;text-align:center}.smallnote{font-size:11px;color:var(--muted);line-height:1.8;margin-top:10px}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.top{align-items:flex-start}.pill{display:none}.stats{grid-template-columns:1fr 1fr 1fr}.stat{padding:10px}.stat strong{font-size:14px}.card{padding:15px}.tabs{gap:3px}.tab{font-size:12px;padding:12px 3px}.grid2{gap:8px}.invoice-preview{padding:13px}}
+@media(max-width:390px){.stats{grid-template-columns:1fr}.cart-row{grid-template-columns:1fr 75px auto}}
+</style>
+</head>
+<body>
+<header><div class="top"><div class="brand"><div class="logo">🧾</div><div><h1>فاکتورچی</h1><p>مدیریت ساده و سریع فروشگاه آنلاین</p></div></div><div class="pill">مدیریت کالا · موجودی · فاکتور</div></div></header>
+<main>
+<nav class="tabs">
+<button class="tab active" data-tab="products">📦 ورود و مدیریت کالا</button>
+<button class="tab" data-tab="invoice">🧾 صدور فاکتور</button>
+<button class="tab" data-tab="about">ℹ️ درباره برنامه</button>
+</nav>
+<section id="products" class="panel active">
+<div class="stats">
+<div class="stat"><small>تعداد انواع کالا</small><strong id="statKinds">۰</strong></div>
+<div class="stat"><small>مجموع موجودی</small><strong id="statStock">۰</strong></div>
+<div class="stat"><small>ارزش تقریبی موجودی</small><strong id="statValue">۰ تومان</strong></div>
+</div>
+<div class="layout">
+<div class="card"><h2 id="productFormTitle">افزودن کالای جدید</h2><p class="sub">نام، قیمت و تعداد موجودی را وارد کن.</p>
+<form id="productForm">
+<input type="hidden" id="editId">
+<div class="field"><label for="pName">نام کالا</label><input id="pName" required maxlength="100" placeholder="مثلاً تی‌شرت سفید"></div>
+<div class="grid2">
+<div class="field"><label for="pPrice">قیمت هر عدد (تومان)</label><input id="pPrice" type="number" min="0" step="1" required placeholder="۱۵۰۰۰۰"></div>
+<div class="field"><label for="pQty">تعداد موجودی</label><input id="pQty" type="number" min="0" step="1" required placeholder="۲۰"></div>
+</div>
+<div class="btnrow"><button class="btn primary" id="saveProduct" type="submit">＋ ثبت کالا</button><button class="btn soft" type="button" id="cancelEdit" hidden>لغو ویرایش</button></div>
+</form>
+<div class="smallnote">اطلاعات کالاها روی همین دستگاه و در همین مرورگر ذخیره می‌شود.</div></div>
+<div class="card"><h2>فهرست کالاها</h2><input id="productSearch" class="search" placeholder="🔎 جست‌وجوی نام کالا..."><div id="productList" class="product-list"></div></div>
+</div>
+</section>
+<section id="invoice" class="panel">
+<div class="layout">
+<div>
+<div class="card"><h2>اطلاعات فاکتور</h2><div class="grid2">
+<div class="field"><label for="customer">نام مشتری</label><input id="customer" placeholder="نام مشتری"></div>
+<div class="field"><label for="phone">شماره تماس</label><input id="phone" type="tel" placeholder="۰۹۱۲..."></div>
+</div><div class="field"><label for="address">نشانی / توضیحات</label><textarea id="address" rows="2" placeholder="نشانی یا توضیحات سفارش"></textarea></div>
+<div class="grid2"><div class="field"><label for="invoiceDate">تاریخ فاکتور</label><input id="invoiceDate" type="date"></div><div class="field"><label for="discount">تخفیف (تومان)</label><input id="discount" type="number" min="0" value="0"></div></div></div>
+<div class="card"><h2>انتخاب کالا</h2><input id="invoiceSearch" class="search" placeholder="🔎 جست‌وجوی کالا برای افزودن"><div id="invoiceProducts" class="product-list"></div></div>
+<div class="card"><h2>اقلام فاکتور</h2><div id="cartList"></div><div class="total"><span>مبلغ نهایی</span><span id="cartTotal">۰ تومان</span></div><div class="btnrow"><button class="btn primary" id="finalize">ثبت فاکتور و کسر موجودی</button><button class="btn soft" id="clearCart">پاک‌کردن اقلام</button></div><p class="smallnote">با ثبت فاکتور، تعداد کالاها از موجودی کم می‌شود. برای جلوگیری از کسر دوباره، ثبت هر فاکتور فقط یک بار انجام می‌شود.</p></div>
+</div>
+<div>
+<div class="card"><h2>پیش‌نمایش فاکتور</h2><p class="sub">پس از ثبت فاکتور، تصویر آن را ذخیره کن.</p>
+<div id="invoicePreview" class="invoice-preview"><div class="invhead"><div><h3>فاکتور فروش</h3><p>فروشگاه شما</p></div><div><p>شماره: <b id="prevNumber">پیش‌نویس</b></p><p>تاریخ: <b id="prevDate">—</b></p></div></div><p>مشتری: <b id="prevCustomer">—</b></p><p>تماس: <b id="prevPhone">—</b></p><p>نشانی/توضیحات: <b id="prevAddress">—</b></p><table><thead><tr><th>کالا</th><th>تعداد</th><th>قیمت</th><th>جمع</th></tr></thead><tbody id="prevRows"><tr><td colspan="4" style="text-align:center">هنوز کالایی انتخاب نشده است</td></tr></tbody></table><div class="invtotal">مبلغ کالاها: <span id="prevSubtotal">۰ تومان</span></div><div class="invtotal">تخفیف: <span id="prevDiscount">۰ تومان</span></div><div class="invtotal">قابل پرداخت: <span id="prevTotal">۰ تومان</span></div><div class="invfoot">از خرید شما سپاسگزاریم 💜</div></div>
+<div class="btnrow" style="margin-top:14px"><button class="btn primary" id="saveImage" disabled>⬇ ذخیره عکس فاکتور</button><button class="btn secondary" id="newInvoice" hidden>＋ فاکتور جدید</button></div>
+<div class="smallnote">ذخیره عکس با اتصال اینترنت برای بارگذاری ابزار تصویر انجام می‌شود. در موبایل، فایل PNG دانلودشده را از پوشه دانلودها باز کن و «ذخیره در گالری» را بزن.</div>
+</div>
+<div class="card"><h2>آخرین فاکتورهای ثبت‌شده</h2><div id="historyList" class="product-list"></div></div>
+</div>
+</div>
+</section>
+<section id="about" class="panel"><div class="card about"><div class="about-logo">🧾✨</div><h2>درباره فاکتورچی</h2><p>فاکتورچی یک ابزار ساده برای فروشگاه‌های آنلاین است تا کالاها و موجودی را مدیریت کنند، فاکتور بسازند و تصویر فاکتور را ذخیره کنند. اطلاعات در مرورگر همین دستگاه نگهداری می‌شود؛ پس برای حفظ اطلاعات، داده‌های مرورگر را پاک نکن.</p><div class="credit">ساخته شده توسط ارمیا 💜</div><p style="margin-top:20px">نسخه ۱.۰ · طراحی‌شده برای استفاده ساده و سریع</p></div></section>
+</main><div class="toast" id="toast"></div>
+<script>
+const $=id=>document.getElementById(id);
+const fa=n=>Number(n||0).toLocaleString('fa-IR');
+const money=n=>fa(n)+' تومان';
+let products=JSON.parse(localStorage.getItem('factorchi_products')||'[]');
+let cart={}; let invoices=JSON.parse(localStorage.getItem('factorchi_invoices')||'[]');
+let currentInvoice=null; let finalized=false;
+function saveData(){localStorage.setItem('factorchi_products',JSON.stringify(products));localStorage.setItem('factorchi_invoices',JSON.stringify(invoices));}
+function toast(s){$('toast').textContent=s;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',2600)}
+function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function renderStats(){$('statKinds').textContent=fa(products.length);$('statStock').textContent=fa(products.reduce((a,p)=>a+p.qty,0));$('statValue').textContent=money(products.reduce((a,p)=>a+p.qty*p.price,0))}
+function renderProducts(){
+ let q=$('productSearch').value.trim().toLowerCase();let list=products.filter(p=>p.name.toLowerCase().includes(q));
+ $('productList').innerHTML=list.length?list.map(p=>`<div class="product"><div><h3>${escapeHtml(p.name)}</h3><div class="meta">${money(p.price)} · موجودی: <b>${fa(p.qty)}</b></div></div><div class="product-actions"><button class="btn secondary mini" onclick="editProduct('${p.id}')">ویرایش</button><button class="btn danger mini" onclick="deleteProduct('${p.id}')">حذف</button></div></div>`).join(''):'<div class="empty">هنوز کالایی ثبت نشده است.</div>';
+ renderInvoiceProducts();renderStats();
+}
+function resetProductForm(){$('productForm').reset();$('editId').value='';$('productFormTitle').textContent='افزودن کالای جدید';$('saveProduct').textContent='＋ ثبت کالا';$('cancelEdit').hidden=true}
+$('productForm').addEventListener('submit',e=>{e.preventDefault();let id=$('editId').value,name=$('pName').value.trim(),price=Number($('pPrice').value),qty=Number($('pQty').value);if(!name||price<0||qty<0)return;
+ if(id){let p=products.find(x=>x.id===id);if(p){p.name=name;p.price=price;p.qty=Math.floor(qty)}toast('اطلاعات کالا ویرایش شد')}
+ else{products.push({id:String(Date.now())+Math.random().toString(16).slice(2,6),name,price:Math.floor(price),qty:Math.floor(qty)});toast('کالا با موفقیت ثبت شد')}
+ saveData();resetProductForm();renderProducts();});
+window.editProduct=id=>{let p=products.find(x=>x.id===id);if(!p)return;$('editId').value=p.id;$('pName').value=p.name;$('pPrice').value=p.price;$('pQty').value=p.qty;$('productFormTitle').textContent='ویرایش کالا';$('saveProduct').textContent='ذخیره تغییرات';$('cancelEdit').hidden=false;document.querySelector('[data-tab="products"]').click();window.scrollTo({top:0,behavior:'smooth'})};
+window.deleteProduct=id=>{let p=products.find(x=>x.id===id);if(!p)return;if(!confirm(`کالای «${p.name}» حذف شود؟`))return;products=products.filter(x=>x.id!==id);delete cart[id];saveData();renderProducts();renderCart();toast('کالا حذف شد')};
+$('cancelEdit').onclick=resetProductForm;$('productSearch').addEventListener('input',renderProducts);
+function renderInvoiceProducts(){let q=$('invoiceSearch').value.trim().toLowerCase();let list=products.filter(p=>p.name.toLowerCase().includes(q));$('invoiceProducts').innerHTML=list.length?list.map(p=>`<div class="product"><div><h3>${escapeHtml(p.name)}</h3><div class="meta">${money(p.price)} · موجودی: ${fa(p.qty)}</div></div><button class="btn secondary mini" ${p.qty<=0||finalized?'disabled':''} onclick="addCart('${p.id}')">＋ افزودن</button></div>`).join(''):'<div class="empty">کالایی پیدا نشد؛ ابتدا از بخش ورود کالا، کالا ثبت کن.</div>'}
+$('invoiceSearch').addEventListener('input',renderInvoiceProducts);
+window.addCart=id=>{if(finalized)return;let p=products.find(x=>x.id===id);if(!p||p.qty<=0)return toast('موجودی این کالا تمام شده است');if((cart[id]||0)>=p.qty)return toast('بیشتر از موجودی نمی‌توان انتخاب کرد');cart[id]=(cart[id]||0)+1;renderCart();renderInvoiceProducts()};
+window.changeCart=(id,val)=>{let p=products.find(x=>x.id===id),n=Math.floor(Number(val));if(!p)return;if(!Number.isFinite(n)||n<1){delete cart[id]}else cart[id]=Math.min(n,p.qty);renderCart();renderInvoiceProducts()};
+function getSubtotal(){return Object.entries(cart).reduce((s,[id,q])=>{let p=products.find(x=>x.id===id);return s+(p?p.price*q:0)},0)}
+function getDiscount(){return Math.max(0,Math.floor(Number($('discount').value)||0))}
+function renderCart(){
+ let entries=Object.entries(cart).filter(([id,q])=>products.some(p=>p.id===id)&&q>0);
+ $('cartList').innerHTML=entries.length?entries.map(([id,q])=>{let p=products.find(x=>x.id===id);return `<div class="cart-row"><div><strong>${escapeHtml(p.name)}</strong><div class="meta">${money(p.price)} / عدد</div></div><input aria-label="تعداد" type="number" min="1" max="${p.qty}" value="${q}" ${finalized?'disabled':''} onchange="changeCart('${id}',this.value)"><button class="btn danger mini" ${finalized?'disabled':''} onclick="changeCart('${id}',0)">حذف</button></div>`}).join(''):'<div class="empty">برای شروع، از فهرست بالا کالا اضافه کن.</div>';
+ let subtotal=getSubtotal(),discount=Math.min(getDiscount(),subtotal),total=Math.max(0,subtotal-discount);$('cartTotal').textContent=money(total);updatePreview();
+}
+function updatePreview(){
+ let date=$('invoiceDate').value||new Date().toISOString().slice(0,10);
+ $('prevDate').textContent=date;$('prevCustomer').textContent=$('customer').value||'—';$('prevPhone').textContent=$('phone').value||'—';$('prevAddress').textContent=$('address').value||'—';$('prevNumber').textContent=currentInvoice?fa(currentInvoice.number):'پیش‌نویس';
+ let entries=Object.entries(cart).filter(([id,q])=>products.some(p=>p.id===id)&&q>0);
+ $('prevRows').innerHTML=entries.length?entries.map(([id,q])=>{let p=products.find(x=>x.id===id);return `<tr><td>${escapeHtml(p.name)}</td><td>${fa(q)}</td><td>${money(p.price)}</td><td>${money(p.price*q)}</td></tr>`}).join(''):'<tr><td colspan="4" style="text-align:center">هنوز کالایی انتخاب نشده است</td></tr>';
+ let subtotal=getSubtotal(),discount=Math.min(getDiscount(),subtotal);$('prevSubtotal').textContent=money(subtotal);$('prevDiscount').textContent=money(discount);$('prevTotal').textContent=money(Math.max(0,subtotal-discount));
+}
+['customer','phone','address','invoiceDate','discount'].forEach(id=>$(id).addEventListener('input',updatePreview));
+$('clearCart').onclick=()=>{if(finalized)return;cart={};renderCart();renderInvoiceProducts()};
+$('finalize').onclick=()=>{
+ if(finalized)return toast('این فاکتور قبلاً ثبت شده است');let entries=Object.entries(cart).filter(([id,q])=>q>0);if(!entries.length)return toast('ابتدا حداقل یک کالا اضافه کن');
+ for(let [id,q] of entries){let p=products.find(x=>x.id===id);if(!p||p.qty<q)return toast('موجودی یکی از کالاها کافی نیست؛ فاکتور را بررسی کن')}
+ let number=invoices.reduce((m,i)=>Math.max(m,i.number||0),0)+1;
+ currentInvoice={number,date:$('invoiceDate').value||new Date().toISOString().slice(0,10),customer:$('customer').value,phone:$('phone').value,address:$('address').value,items:entries.map(([id,q])=>{let p=products.find(x=>x.id===id);return {name:p.name,price:p.price,qty:q}}),discount:Math.min(getDiscount(),getSubtotal()),total:Math.max(0,getSubtotal()-Math.min(getDiscount(),getSubtotal()))};
+ entries.forEach(([id,q])=>{let p=products.find(x=>x.id===id);p.qty-=q});invoices.unshift(currentInvoice);saveData();finalized=true;$('finalize').disabled=true;$('finalize').textContent='✓ فاکتور ثبت شد';$('saveImage').disabled=false;$('newInvoice').hidden=false;renderProducts();renderCart();renderHistory();toast('فاکتور ثبت شد و موجودی کالاها کم شد.');
+};
+$('newInvoice').onclick=()=>{cart={};currentInvoice=null;finalized=false;$('customer').value='';$('phone').value='';$('address').value='';$('discount').value='0';$('invoiceDate').value=new Date().toISOString().slice(0,10);$('finalize').disabled=false;$('finalize').textContent='ثبت فاکتور و کسر موجودی';$('saveImage').disabled=true;$('newInvoice').hidden=true;renderCart();renderInvoiceProducts();updatePreview();toast('فاکتور جدید آماده است')};
+function renderHistory(){$('historyList').innerHTML=invoices.length?invoices.slice(0,8).map(inv=>`<div class="product"><div><h3>فاکتور شماره ${fa(inv.number)}</h3><div class="meta">${escapeHtml(inv.customer||'مشتری ثبت‌نشده')} · ${escapeHtml(inv.date)}<br>${money(inv.total)}</div></div><button class="btn secondary mini" onclick="viewInvoice(${inv.number})">مشاهده</button></div>`).join(''):'<div class="empty">هنوز فاکتوری ثبت نشده است.</div>'}
+window.viewInvoice=num=>{let inv=invoices.find(x=>x.number===num);if(!inv)return;currentInvoice=inv;cart={};products.forEach(p=>{});$('customer').value=inv.customer||'';$('phone').value=inv.phone||'';$('address').value=inv.address||'';$('invoiceDate').value=inv.date;$('discount').value=inv.discount||0;
+ // Display saved invoice items independently from current inventory.
+ $('prevNumber').textContent=fa(inv.number);$('prevDate').textContent=inv.date;$('prevCustomer').textContent=inv.customer||'—';$('prevPhone').textContent=inv.phone||'—';$('prevAddress').textContent=inv.address||'—';
+ $('prevRows').innerHTML=inv.items.map(it=>`<tr><td>${escapeHtml(it.name)}</td><td>${fa(it.qty)}</td><td>${money(it.price)}</td><td>${money(it.price*it.qty)}</td></tr>`).join('');let sub=inv.items.reduce((s,it)=>s+it.price*it.qty,0);$('prevSubtotal').textContent=money(sub);$('prevDiscount').textContent=money(inv.discount||0);$('prevTotal').textContent=money(inv.total);$('cartList').innerHTML='<div class="notice">در حال مشاهده فاکتور ثبت‌شده شماره '+fa(inv.number)+' هستی. برای ساخت فاکتور تازه، «فاکتور جدید» را بزن.</div>'; $('cartTotal').textContent=money(inv.total);finalized=true;$('finalize').disabled=true;$('finalize').textContent='فاکتور ثبت‌شده';$('saveImage').disabled=false;$('newInvoice').hidden=false;document.querySelector('[data-tab="invoice"]').click();};
+$('saveImage').onclick=async()=>{
+ if(!currentInvoice&&!Object.keys(cart).length)return toast('ابتدا کالا اضافه کن یا فاکتور ثبت‌شده‌ای را باز کن');
+ if(!window.html2canvas){toast('ابزار ساخت عکس بارگذاری نشده؛ اینترنت را بررسی کن');return}
+ try{let canvas=await html2canvas($('invoicePreview'),{scale:2,backgroundColor:'#ffffff',useCORS:true});let a=document.createElement('a');a.download=`factor-${currentInvoice?currentInvoice.number:'preview'}.png`;a.href=canvas.toDataURL('image/png');a.click();toast('عکس فاکتور دانلود شد؛ در موبایل آن را در گالری ذخیره کن')}catch(e){toast('ساخت عکس انجام نشد؛ دوباره تلاش کن')}
+};
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===b.dataset.tab))}));
+$('invoiceDate').value=new Date().toISOString().slice(0,10);
+renderProducts();renderCart();renderHistory();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</body></html>
